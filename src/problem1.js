@@ -1,4 +1,7 @@
-function problem1(pobi, crong) {}
+function problem1(pobi, crong) {
+  const pobiScore = getScore(pobi);
+  const crongScore = getScore(crong);
+}
 
 function getScore(person) {
   const leftScore = person[0];
@@ -18,6 +21,15 @@ function calculateScore(score) {
   const multiplyNumber = hundred * ten * one;
 
   return Math.max(plusNumber, multiplyNumber);
+}
+
+function isPageError(person) {
+  const firstPage = 1;
+  const lastPage = 400;
+
+  if (person[0] <= firstPage || person[1] >= lastPage)
+    return "페이지는 1페이지 이상 400페이지 이하 입니다.";
+  else return "Not Error";
 }
 
 module.exports = problem1;
