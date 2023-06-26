@@ -5,6 +5,8 @@ function getScore(person) {
   const leftValues = calculateScore(leftScore);
   const rightScore = person[1];
   const rightValues = calculateScore(rightScore);
+
+  return Math.max(leftValues, rightValues);
 }
 
 function calculateScore(score) {
@@ -17,4 +19,5 @@ function calculateScore(score) {
 
   return Math.max(plusNumber, multiplyNumber);
 }
+
 module.exports = problem1;
