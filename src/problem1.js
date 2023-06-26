@@ -32,4 +32,9 @@ function isPageError(person) {
   else return "Not Error";
 }
 
+function isPageCountError(person) {
+  if (person.length !== 2) return "페이지는 두 쪽을 선택해야 합니다.";
+  else return "Not Error";
+}
+
 module.exports = problem1;
