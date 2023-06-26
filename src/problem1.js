@@ -23,6 +23,23 @@ function calculateScore(score) {
   return Math.max(plusNumber, multiplyNumber);
 }
 
+function isError(person) {
+  const pageError = isPageError(person);
+  const pageCountError = isPageCountError(person);
+  const leftPageError = isLeftPageError(person);
+  const orderedError = isRightPageError(person);
+
+  if (pageError !== "Not Error") return pageError;
+
+  if (pageCountError !== "Not Error") return pageCountError;
+
+  if (leftPageError !== "Not Error") return leftPageError;
+
+  if (orderedError !== "Not Error") return orderedError;
+
+  return "Not Error";
+}
+
 function isPageError(person) {
   const firstPage = 1;
   const lastPage = 400;
