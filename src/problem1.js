@@ -37,4 +37,9 @@ function isPageCountError(person) {
   else return "Not Error";
 }
 
+function isLeftPageError(person) {
+  if (person[0] % 2 === 0) return "왼쪽 페이지는 홀수여야만 합니다.";
+  else return "Not Error";
+}
+
 module.exports = problem1;
