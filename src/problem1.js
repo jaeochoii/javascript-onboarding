@@ -24,7 +24,9 @@ function calculateScore(score) {
   const one = Math.floor((score % 100) % 10);
 
   const plusNumber = hundred + ten + one;
-  const multiplyNumber = hundred * ten * one;
+  let multiplyNumber;
+  if (hundred === 0) multiplyNumber = ten * one;
+  else multiplyNumber = hundred * ten * one;
 
   return Math.max(plusNumber, multiplyNumber);
 }
