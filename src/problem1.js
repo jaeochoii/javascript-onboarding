@@ -42,4 +42,10 @@ function isLeftPageError(person) {
   else return "Not Error";
 }
 
+function isRightPageError(person) {
+  if (person[1] !== person[0] + 1)
+    return "오른쪽 페이지는 왼쪽 페이지의 다음 숫자여야만 합니다.";
+  else return "Not Error";
+}
+
 module.exports = problem1;
