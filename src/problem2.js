@@ -1,28 +1,44 @@
 function problem2(cryptogram) {
-  const result = removeRepeatChar(cryptogram);
-  if (isError === "Not Error") return result;
+  if (isError(cryptogram) === "Not Error") {
+    const result = removeRepeatChar(cryptogram);
+
+    return result;
+  }
+
+  return isError(cryptogram);
 }
 
 function removeRepeatChar(string) {
-  for (let i = 0; i < string.length; i++) {
-    const CHAR = string[i];
-    if (string[i] !== string[i + 1]) continue;
-    else {
-      for (let j = i; ; j++) {
-        if (string[j] === CHAR) continue;
-        else {
-          string = string.substr(i, j);
-          break;
-        }
-      }
+  const stringLength = string.length;
+  let removeResult = "";
+  let duplicateAlphabet = "";
+  let isChanged = false;
+
+  for (let wordIndex = 0; wordIndex < stringLength; wordIndex++) {
+    if (string[wordIndex] === string[wordIndex + 1]) {
+      isChanged = true;
+      duplicateAlphabet = string[wordIndex];
+      wordIndex++;
+      continue;
     }
+
+    if (duplicateAlphabet[wordIndex] === duplicateAlphabet) {
+      duplicateAlphabet = "";
+      wordIndex++;
+      continue;
+    }
+
+    removeResult += string[wordIndex];
   }
-  return string;
+
+  if (isChanged === false) return removeResult;
+
+  return removeRepeatChar(removeResult);
 }
 
 function isError(string) {
-  const LengthError = isLengthError(cryptogram);
-  const UpperCaseError = isUpperCaseError(cryptogram);
+  const LengthError = isLengthError(string);
+  const UpperCaseError = isUpperCaseError(string);
 
   if (LengthError === "Not Error" && UpperCaseError === "Not Error")
     return "Not Error";
@@ -38,11 +54,12 @@ function isLengthError(string) {
 }
 
 function isUpperCaseError(string) {
-  string.map((char) => {
-    if (char !== char.toLowerCase())
+  for (let i = 0; i < string.length; i++) {
+    let char = string[i];
+    if (char !== string[i].toLowerCase())
       return "문자는 소문자로 이루어져야만 합니다.";
     else return "Not Error";
-  });
+  }
 }
 
 module.exports = problem2;
