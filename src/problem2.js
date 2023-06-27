@@ -1,5 +1,6 @@
 function problem2(cryptogram) {
-  return removeRepeatChar(cryptogram);
+  const result = removeRepeatChar(cryptogram);
+  if (isError === "Not Error") return result;
 }
 
 function removeRepeatChar(string) {
@@ -17,6 +18,18 @@ function removeRepeatChar(string) {
     }
   }
   return string;
+}
+
+function isError(string) {
+  const LengthError = isLengthError(cryptogram);
+  const UpperCaseError = isUpperCaseError(cryptogram);
+
+  if (LengthError === "Not Error" && UpperCaseError === "Not Error")
+    return "Not Error";
+
+  if (LengthError !== "Not Error") return LengthError;
+
+  if (UpperCaseError !== "Not Error") return UpperCaseError;
 }
 
 function isLengthError(string) {
