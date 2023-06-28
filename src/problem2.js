@@ -18,13 +18,11 @@ function removeRepeatChar(string) {
     if (string[wordIndex] === string[wordIndex + 1]) {
       isChanged = true;
       duplicateAlphabet = string[wordIndex];
-      wordIndex++;
       continue;
     }
 
-    if (duplicateAlphabet[wordIndex] === duplicateAlphabet) {
+    if (string[wordIndex] === duplicateAlphabet) {
       duplicateAlphabet = "";
-      wordIndex++;
       continue;
     }
 
