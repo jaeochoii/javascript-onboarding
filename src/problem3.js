@@ -17,11 +17,16 @@ function isError(number) {
 function clapCount(number) {
   let cnt = 0;
   for (let i = 1; i <= number; i++) {
-    if (i.includes(3) === true) cnt++;
-    if (i.includes(6) === true) cnt++;
-    if (i.includes(9) === true) cnt++;
+    let numberArr = String(i).split("");
+    for (let j = 0; j < numberArr.length; j++) {
+      if (isNumberDividedThree(Number(numberArr[j])) === true) cnt++;
+    }
   }
   return cnt;
+}
+
+function isNumberDividedThree(number) {
+  if (number !== 0 && number % 3 === 0) return true;
 }
 
 module.exports = problem3;
