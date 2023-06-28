@@ -1,4 +1,9 @@
-function problem3(number) {}
+function problem3(number) {
+  const result = clapCount(number);
+  const error = isError(number);
+  if (error === "Not Error") return result;
+  return error;
+}
 
 function isError(number) {
   const FIRST_NUMBER = 1;
