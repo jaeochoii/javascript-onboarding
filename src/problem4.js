@@ -1,36 +1,30 @@
 function problem4(word) {
-  const alphabet = Array.from({ length: 26 }, (index) =>
+  const upperAlphabet = Array.from({ length: 26 }, (value, index) =>
     String.fromCharCode(index + 65)
   );
-  const reverseAlphabet = alphabet.reverse();
-  const isError = isLengthError();
-  const result = changeWord(word, alphabet, reverseAlphabet);
+  const lowerAlphabet = Array.from({ length: 26 }, (value, index) =>
+    String.fromCharCode(index + 97)
+  );
+  const result = changeWord(word, upperAlphabet, lowerAlphabet);
 
-  if (isError === "Not Error") return result;
-  return isError;
+  return result;
 }
 
-function isLengthError(word) {
-  const leastLength = 0;
-  const maximumLength = 1000;
-
-  if (word.length < leastLength || word.length > maximumLength) {
-    return "word의 길이는 1이상 1,000 이하입니다.";
-  }
-  return "Not Error";
-}
-
-function changeWord(word, arr, reverseArr) {
+function changeWord(word, upperArr, lowerArr) {
   const array = word.split("");
   let resultArr = [];
   for (let i = 0; i < array.length; i++) {
-    if (array[i] === " ") resultArr.push(" ");
-    if (array[i].toUppercase() === array[i]) {
-      let foundWord = arr.indexOf(array[i]);
-      resultArr.push(reverseArr[foundWord]);
-    } else {
-      let foundWord = arr.indexOf(array[i]);
-      resultArr.push(reverseArr[foundWord].toLowerCase());
+    if (array[i] === " ") {
+      resultArr.push(" ");
+      continue;
+    } else if (upperArr.indexOf(array[i]) !== -1) {
+      let foundWord = upperArr.indexOf(array[i]);
+      resultArr.push(upperArr[25 - foundWord]);
+      continue;
+    } else if (lowerArr.indexOf(array[i]) !== -1) {
+      let foundWord = lowerArr.indexOf(array[i]);
+      resultArr.push(lowerArr[25 - foundWord]);
+      continue;
     }
   }
   return resultArr.join("");
