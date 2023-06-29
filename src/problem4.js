@@ -6,28 +6,34 @@ function problem4(word) {
     String.fromCharCode(index + 97)
   );
   const result = changeWord(word, upperAlphabet, lowerAlphabet);
-
   return result;
 }
 
 function changeWord(word, upperArr, lowerArr) {
-  const array = word.split("");
-  let resultArr = [];
+  const array = stringToArr(word);
+  const resultArr = [];
   for (let i = 0; i < array.length; i++) {
-    if (array[i] === " ") {
-      resultArr.push(" ");
-      continue;
-    } else if (upperArr.indexOf(array[i]) !== -1) {
-      let foundWord = upperArr.indexOf(array[i]);
-      resultArr.push(upperArr[25 - foundWord]);
-      continue;
-    } else if (lowerArr.indexOf(array[i]) !== -1) {
-      let foundWord = lowerArr.indexOf(array[i]);
-      resultArr.push(lowerArr[25 - foundWord]);
-      continue;
-    }
+    if (array[i] === " ") resultArr.push(" ");
+    else if (upperArr.indexOf(array[i]) !== -1)
+      isUpperCase(array[i], upperArr, resultArr);
+    else if (lowerArr.indexOf(array[i]) !== -1)
+      isLowerCase(array[i], lowerArr, resultArr);
   }
   return resultArr.join("");
+}
+
+function stringToArr(word) {
+  return word.split("");
+}
+
+function isUpperCase(char, upperArr, result) {
+  let foundWord = upperArr.indexOf(char);
+  result.push(upperArr[25 - foundWord]);
+}
+
+function isLowerCase(char, lowerArr, result) {
+  let foundWord = lowerArr.indexOf(char);
+  result.push(lowerArr[25 - foundWord]);
 }
 
 module.exports = problem4;
