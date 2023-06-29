@@ -10,9 +10,8 @@ function problem1(pobi, crong) {
 }
 
 function getScore(person) {
-  const leftScore = person[0];
+  const [leftScore, rightScore] = person;
   const leftValues = calculateScore(leftScore);
-  const rightScore = person[1];
   const rightValues = calculateScore(rightScore);
 
   return Math.max(leftValues, rightValues);
@@ -22,11 +21,9 @@ function calculateScore(score) {
   const hundred = Math.floor(score / 100);
   const ten = Math.floor((score % 100) / 10);
   const one = Math.floor((score % 100) % 10);
-
   const plusNumber = hundred + ten + one;
-  let multiplyNumber;
-  if (hundred === 0) multiplyNumber = ten * one;
-  else multiplyNumber = hundred * ten * one;
+
+  let multiplyNumber = hundred === 0 ? ten * one : hundred * ten * one;
 
   return Math.max(plusNumber, multiplyNumber);
 }
