@@ -3,6 +3,11 @@ function problem4(word) {
     String.fromCharCode(index + 65)
   );
   const reverseAlphabet = alphabet.reverse();
+  const isError = isLengthError();
+  const result = changeWord(word, alphabet, reverseAlphabet);
+
+  if (isError === "Not Error") return result;
+  return isError;
 }
 
 function isLengthError(word) {
@@ -20,9 +25,15 @@ function changeWord(word, arr, reverseArr) {
   let resultArr = [];
   for (let i = 0; i < array.length; i++) {
     if (array[i] === " ") resultArr.push(" ");
-    let foundWord = arr.indexOf(array[i]);
-    resultArr.push(reverseArr[foundWord]);
+    if (array[i].toUppercase() === array[i]) {
+      let foundWord = arr.indexOf(array[i]);
+      resultArr.push(reverseArr[foundWord]);
+    } else {
+      let foundWord = arr.indexOf(array[i]);
+      resultArr.push(reverseArr[foundWord].toLowerCase());
+    }
   }
+  return resultArr.join("");
 }
 
 module.exports = problem4;
