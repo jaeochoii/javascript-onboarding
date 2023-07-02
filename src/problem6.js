@@ -1,5 +1,5 @@
 function problem6(forms) {
-  const result = [];
+  let result = [];
   const userNumber = forms.length;
   let email_set = new Set();
 
