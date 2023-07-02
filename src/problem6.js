@@ -1,6 +1,9 @@
-function problem6(forms) {
-  var answer;
-  return answer;
+function problem6(forms) {}
+
+function sortEmailArray(email_set) {
+  let emailArray = Array.from(email_set);
+  emailArray.sort();
+  return emailArray;
 }
 
 module.exports = problem6;
