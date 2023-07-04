@@ -65,7 +65,7 @@ function deleteUsersFriends(user, friends, visitors) {
   return visitors; // user의 friends가 아닌 방문자만 배열에 남겨두기 -> 1씩 증가할 때에만 쓰일 예정
 }
 
-function problem7(user, friends, visitors) {
+function updateVisitorScore(user, friends, visitors) {
   let updateObj = updateFriendsVisitorScore(user, friends, visitors);
   let deleteFriendVisitors = deleteUsersFriends(user, friends, visitors);
   const updateVisitorsLength = deleteFriendVisitors.length;
@@ -73,14 +73,16 @@ function problem7(user, friends, visitors) {
   for (let i = 0; i < updateVisitorsLength; i++) {
     updateObj[deleteFriendVisitors[i]] += 1;
   }
+  return updateObj;
+}
 
-  let sorted = Object.entries(updateObj).sort((a, b) => b[1] - a[1]);
-  let result = [];
-
+function problem7(user, friends, visitors) {
+  const resultObj = updateVisitorScore(user, friends, visitors);
+  const sorted = Object.entries(resultObj).sort((a, b) => b[1] - a[1]);
+  const result = [];
   for (let element of sorted) {
     if (element[1] !== 0) result.push(element[0]);
   }
-
   return result;
 }
 
