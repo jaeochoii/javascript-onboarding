@@ -5,7 +5,7 @@ function problem6(forms) {
 
   if (userNumber < 2) return result;
 
-  let repeatableArr = Array.from({ length: userNumber }, () => 0);
+  let repeatableArr = Array.from({ length: userNumber }).fill(0);
 
   for (let i = 0; i < userNumber; i++) {
     for (let j = i + 1; j < userNumber; j++) {
