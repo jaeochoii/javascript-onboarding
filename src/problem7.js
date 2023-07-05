@@ -1,5 +1,5 @@
 function usersList(user, friends, visitors) {
-  let users = [];
+  const users = [];
   for (let i = 0; i < friends.length; i++) {
     for (let j = 0; j < 2; j++) {
       if (friends[i][j] !== user) users.push(friends[i][j]);
@@ -66,8 +66,8 @@ function deleteUsersFriends(user, friends, visitors) {
 }
 
 function updateVisitorScore(user, friends, visitors) {
-  let updateObj = updateFriendsVisitorScore(user, friends, visitors);
-  let deleteFriendVisitors = deleteUsersFriends(user, friends, visitors);
+  const updateObj = updateFriendsVisitorScore(user, friends, visitors);
+  const deleteFriendVisitors = deleteUsersFriends(user, friends, visitors);
   const updateVisitorsLength = deleteFriendVisitors.length;
 
   for (let i = 0; i < updateVisitorsLength; i++) {
